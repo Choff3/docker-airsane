@@ -1,16 +1,12 @@
 # syntax=docker/dockerfile:1
-FROM ubuntu:20.04
-ENV DEBIAN_FRONTEND noninteractive
-#RUN locale-gen en_US en_US.UTF-8 && dpkg-reconfigure locales
+FROM debian
 
 # Install packages
 RUN apt-get update && apt-get install -y \
-    sane \
     sane-utils \
-#    libsane-extras \
     libsane-hpaio \
     dbus \
-    avahi-utils \
+    avahi-daemon \
     supervisor \
     && apt-get autoremove -y \
     && apt-get clean \
